@@ -1,0 +1,18 @@
+{% extends "_layouts/main.twig" %}
+
+{# Set Meta #}
+{% set title = entry.title %}
+
+{% block content %}
+<section class="jumbotron text-center container">
+    <div class="container">
+    <h1 class="text-6xl t-full">{{ entry.title }}</h1>
+    <p class="lead text-muted">{{ entry.excerpt }}</p>
+    <button class="btn btn-primary text-uppercase">contact us</button>
+    </div>
+</section>
+<div class="container">
+	<div class="mt-1">{{ entry.body }}</div>
+</div>
+
+{% endblock %}
