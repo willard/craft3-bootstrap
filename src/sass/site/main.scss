@@ -1,0 +1,68 @@
+
+a{
+    color: black;
+}
+a:hover {
+  text-decoration: none;
+}
+// header
+nav.site-header {
+  box-shadow: -2px 1px 6px #adb5bd;
+  ul.social a {
+    color: #fff;
+  }
+}
+
+// main
+main {
+  min-height: 43vh;
+}
+
+// home
+.home{
+  section.jumbotron {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: #f8f9fa;
+  }
+  #services{
+    .card{
+      .card-text {
+        min-height: 144px;
+      }
+      img {
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+      }
+    }
+    a:hover img {
+      filter: unset !important;
+    }
+  }
+}
+
+// footer
+footer {
+  background: #f8f9fa;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+ }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+
+ }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+ }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+ }

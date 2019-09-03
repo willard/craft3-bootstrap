@@ -1,0 +1,20 @@
+{
+	"browserSyncOptions": {
+		"proxy": "explore.test:8888/",
+		"notify": false
+	},
+	"browserSyncWatchFiles": ["./css/*.min.css", "./js/*.min.js", "./**/*.twig"],
+	"paths": {
+		"js": "./web/assets/js",
+		"css": "./web/assets/css",
+		"img": "./web/assets/img",
+		"imgsrc": "./src/img",
+		"sass": "./src/sass",
+		"node": "./node_modules/",
+		"bower": "./bower_components/",
+		"dev": "./src",
+		"dist": "./dist",
+		"distprod": "./dist-product",
+		"vendor": ""
+	}
+}

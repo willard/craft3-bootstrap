@@ -1,0 +1,100 @@
+{% set baseUrl = alias('@web') ~ '/' %}
+{% set devMode = craft.app.config.general.devMode %}
+{% set lang = craft.app.language |slice(0,2) %}
+
+{% set title = title ?? globalSeo.metaTitle ?? false %}
+{% set description = description ?? globalSeo.metaDescription ?? false %}
+{% set seoImage = seoImage ?? globalSeo.globalSeoImage.one().getUrl() ?? false %}
+{% set seoTwitterHandle = globalContactInformation.globalTwitterUsername ?? false %}
+
+{% set enableFacebookPixel = enableFacebookPixel ?? globalsSettings.enableFacebookPixel ?? false %}
+{% set enableDrift = enableDrift ?? globalsSettings.enableDrift ?? false %}
+{% set enableFullstory = enableFullstory ?? globalsSettings.enableFullstory ?? false %}
+
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+    <head>
+        {# -- Meta header tags -- #}
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta
+        name="viewport" content="width=device-width, minimum-scale=1">
+
+        {# -- Basic Meta -- #}
+        <title>{{ title ? title ~ ' - ' }}{{ siteName }}</title>
+        <meta
+        name="description" content="{{ description|striptags|raw }}">
+
+        {# -- Favicons -- #}
+        {% include '_includes/blocks/favicons' %}
+
+        {# -- Open Graph Meta -- #}
+        <meta property="og:locale" content="{{ lang }}">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="{{ title }}">
+        <meta property="og:description" content="{{ description|striptags|raw }}">
+        <meta property="og:url" content="{{ craft.app.request.url }}">
+        <meta property="og:site_name" content="{{ siteName }}">
+        <meta
+        property="og:image" content="{{ seoImage }}">
+
+        {# -- Twitter Cards Meta -- #}
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{ title }}">
+        <meta name="twitter:description" content="{{ description|striptags|raw }}">
+        <meta name="twitter:image" content="{{ seoImage }}">
+        {% if seoTwitterHandle %}
+            <meta name="twitter:site" content="{{ seoTwitterHandle }}">
+            <meta name="twitter:creator" content="{{ seoTwitterHandle }}">
+        {% endif %}
+
+        {# -- Links -- #}
+        <link rel="dns-prefetch" href="{{ baseUrl }}">
+        <link rel="preconnect" href="{{ baseUrl }}" crossorigin="">
+
+        <link rel="stylesheet" href="{{ baseUrl }}assets/css/site{{ devMode ? '' : '.min.' ~ staticAssetsVersion }}.css">
+
+        {# -- Polyfill -- #}
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+
+        {# -- Analytics -- #}
+        {% if not devMode %}
+            <!-- Global Site Tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id={{ globalsSettings.gaTrackingId | raw }}"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+                gtag('js', new Date());
+                gtag('config', '{{ globalsSettings.gaTrackingId | raw }}');
+            </script>
+        {% endif %}
+
+        {# -- Header Meta -- #}
+        {# {{ globalSettings.globalHeaderMeta|raw }} #}
+
+        {% if enableFacebookPixel %}
+            {% include '_includes/js/facebookPixel' %}
+        {% endif %}
+
+        {% if enableDrift %}
+            {% include '_includes/js/drift' %}
+        {% endif %}
+
+        {% if enableFullstory %}
+            {% include '_includes/js/fullstory' %}
+        {% endif %}
+
+    </head>
+
+    <body class="{{entry.title|lower|replace({' ': '-'})}}">
+
+        {% include '_includes/blocks/header' %}
+        {% block body %}{% endblock %}
+        {% include '_includes/blocks/footer' %}
+
+        {{ endBody() }}
+        <script src="{{ baseUrl }}assets/js/site{{ devMode ? '' : '.min.' ~ staticAssetsVersion }}.js"></script>
+    </body>
+</html>

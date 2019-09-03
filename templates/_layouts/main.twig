@@ -1,0 +1,15 @@
+
+ {#
+    Main wrapper for standard pages
+    -------------------------
+#}
+
+{% extends "_layouts/_base.twig" %}
+
+{% block body %}
+
+	<main class="container-fluid mt-5">
+		{% block content %}{% endblock %}
+	</main>
+
+{% endblock %}

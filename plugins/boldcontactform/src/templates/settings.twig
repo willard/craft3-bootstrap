@@ -1,0 +1,26 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Bold Contact Form plugin for Craft CMS 3.x
+ *
+ * Bold Contact Form Settings.twig
+ *
+ * @author    Willard Macay
+ * @copyright Copyright (c) 2019 Willard Macay
+ * @link      https://iamwillard.com
+ * @package   BoldContactForm
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("willard\\boldcontactform\\assetbundles\\boldcontactform\\BoldContactFormAsset") %}
+
+{{ forms.textField({
+    label: 'Email',
+    instructions: 'Enter your email.',
+    id: 'toEmail',
+    name: 'toEmail',
+    value: settings['toEmail']})
+}}

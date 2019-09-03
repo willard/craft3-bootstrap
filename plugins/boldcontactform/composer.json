@@ -1,0 +1,40 @@
+{
+    "name": "willard/bold-contact-form",
+    "description": "Simple contact form",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "bold contact form"
+    ],
+    "support": {
+        "docs": "???",
+        "issues": "???"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Willard Macay",
+            "homepage": "https://iamwillard.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "willard\\boldcontactform\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Bold Contact Form",
+        "handle": "bold-contact-form",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "???",
+        "class": "willard\\boldcontactform\\BoldContactForm"
+    }
+}
