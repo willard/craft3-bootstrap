@@ -72,7 +72,7 @@ class SendController extends Controller
         $html .= "<div><p><b>email:</b> {$email}</p></div>";
         $html .= "<div><p>{$message}</p></div>";
 
-        //save data to db the send email to both
+        //save data as entry
 
         /*
         if(db.save(post)){
@@ -82,9 +82,9 @@ class SendController extends Controller
         }
         **/
 
-        if( $this->sendMail($html, $subject, $email)){
+        if ($this->sendMail($html, $subject, $email)) {
             return $this->redirectToPostedUrl();
-        }else{
+        } else {
             return "message not sent"; //return error to form,
         }
     }
